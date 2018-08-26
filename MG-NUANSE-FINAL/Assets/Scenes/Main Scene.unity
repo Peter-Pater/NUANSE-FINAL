@@ -3670,6 +3670,8 @@ MonoBehaviour:
   - {fileID: 2032879215}
   - {fileID: 207977380}
   - {fileID: 1982477010}
+  - {fileID: 998731506}
+  transitCommand: 0
   isTransiting: 0
   isRelocateComplete: 0
   curtainOpacSpeed: 0.05
