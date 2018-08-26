@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Click : MonoBehaviour {
-	public int[] footprintvalues;
+	public int[] footprintvalues = new int[5];
 	public GameObject footPrint0;
 	public GameObject footPrint1;
 	public GameObject footPrint2;
