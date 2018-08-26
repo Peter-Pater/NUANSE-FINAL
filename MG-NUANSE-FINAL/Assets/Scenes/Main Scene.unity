@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 735937300}
   - component: {fileID: 735937303}
   - component: {fileID: 735937302}
+  - component: {fileID: 735937304}
   m_Layer: 0
   m_Name: half_candle
   m_TagString: Untagged
@@ -698,6 +699,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &735937304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 735937299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116eba82192fa4111b1a22dabaa3ced2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halfCandle: {fileID: 0}
+  fullCandle: {fileID: 0}
 --- !u!1 &738096216
 GameObject:
   m_ObjectHideFlags: 0
