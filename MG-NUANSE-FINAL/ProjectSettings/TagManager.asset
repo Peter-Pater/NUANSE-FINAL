@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sprite_Change_Mode_Multi
+  - bullet
+  - gun
   layers:
   - Default
   - TransparentFX
