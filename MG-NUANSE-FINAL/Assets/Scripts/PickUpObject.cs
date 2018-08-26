@@ -7,6 +7,11 @@ public class PickUpObject : MonoBehaviour {
     SpriteRenderer state1Renderer;
     public SpriteRenderer state2Renderer;
 
+
+    public TransConditions conditions;
+    bool isConditionsCounted = false;
+
+
     bool isObjectPicked = false;
 
 
@@ -39,6 +44,11 @@ public class PickUpObject : MonoBehaviour {
     private void OnMouseDown()
     {
         isObjectPicked = true;
+
+        if (conditions != null && !isConditionsCounted){
+            conditions.conditionsMet += 1;
+            isConditionsCounted = true;
+        }
        
     }
 }
