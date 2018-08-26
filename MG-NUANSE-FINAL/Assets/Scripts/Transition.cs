@@ -33,7 +33,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(nextSceneObj);
+        //Debug.Log(nextSceneObj);
 
         CheckCondition();
 
@@ -92,7 +92,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
         if (Input.GetKeyDown(KeyCode.Space) && nextScene <= 4){
 
-            Debug.Log(isThisScenePassed);
+            //Debug.Log(isThisScenePassed);
 
             if (!isThisScenePassed)
             {
