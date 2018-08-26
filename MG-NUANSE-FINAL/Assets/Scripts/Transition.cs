@@ -9,6 +9,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     Transform startingPoint;
     public int nextScene = 0;
     public GameObject[] scenes = new GameObject[5];
+    public bool transitCommand = false;
 
 
     SpriteRenderer curtainRenderer;
@@ -82,6 +83,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
                     isTransiting = false;
                     isRelocateComplete = false;
                     isThisScenePassed = false;
+                    transitCommand = false;
                 }
             }
         }
@@ -90,7 +92,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
     void CheckCondition(){
 
-        if (Input.GetKeyDown(KeyCode.Space) && nextScene <= 4){
+        if ((transitCommand == true || Input.GetKeyDown("space")) && nextScene <= 4){
 
             //Debug.Log(isThisScenePassed);
 

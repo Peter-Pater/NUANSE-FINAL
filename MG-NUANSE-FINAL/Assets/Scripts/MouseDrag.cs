@@ -41,6 +41,7 @@ public class MouseDrag : MonoBehaviour {
         }
 
         if (collision.gameObject.name == "gun_catcher" && canbedragged == false){
+            GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
             Destroy(gameObject);
         }
 	}
