@@ -26,11 +26,15 @@ public class MouseDrag : MonoBehaviour {
 		Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
 		transform.position = cursorPosition;
 	}
-	
-    void OnCollisionEnter(Collision col) {
-		Debug.Log("Collide");
-		if (col.gameObject.name == "Well"){
-      	  Destroy(gameObject);
-		}
-    }
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+        Debug.Log("Collide");
+        if (collision.gameObject.tag == "Well")
+        {
+            Destroy(gameObject);
+        }
+	}
+
+
 }
