@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61878491}
   - component: {fileID: 61878495}
+  - component: {fileID: 61878498}
   - component: {fileID: 61878494}
   - component: {fileID: 61878497}
   - component: {fileID: 61878493}
@@ -356,6 +357,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496e09eb45d124f75994a3a853fde87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &61878498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 61878490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882eeccd364e24a758e7497a44f9ee56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 1
 --- !u!1 &103831967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,6 +2946,7 @@ GameObject:
   - component: {fileID: 1457232940}
   - component: {fileID: 1457232939}
   - component: {fileID: 1457232938}
+  - component: {fileID: 1457232942}
   m_Layer: 0
   m_Name: Lamp_Ground
   m_TagString: Untagged
@@ -3055,6 +3069,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1457232942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457232936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3662b4fe2a84c32866a3df32295d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj2Unlock: {fileID: 61878490}
 --- !u!1 &1493623320
 GameObject:
   m_ObjectHideFlags: 0
