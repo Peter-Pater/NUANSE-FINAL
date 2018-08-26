@@ -666,7 +666,6 @@ Transform:
   m_Children:
   - {fileID: 1131940033}
   - {fileID: 475907361}
-  - {fileID: 1870030227}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1331,6 +1330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1293291592}
+  - {fileID: 1870030227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1356,12 +1356,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870030226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1800003, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 896310503}
-  m_RootOrder: 2
+  m_Father: {fileID: 1771579091}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1870030228
 MonoBehaviour:
@@ -1376,8 +1376,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 1771579087}
   nextSceneObj: {fileID: 539043628}
+  nextScene: 0
+  scenes:
+  - {fileID: 539043628}
+  - {fileID: 2096672536}
+  - {fileID: 2032879215}
+  - {fileID: 207977380}
+  - {fileID: 1982477010}
   isTransiting: 0
   isRelocateComplete: 0
+  curtainOpacSpeed: 0.005
+  isThisScenePassed: 0
 --- !u!1 &1964522026
 GameObject:
   m_ObjectHideFlags: 0

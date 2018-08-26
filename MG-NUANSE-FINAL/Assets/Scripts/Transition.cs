@@ -7,6 +7,8 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     public GameObject cameraObj;
     public GameObject nextSceneObj;
     Transform startingPoint;
+    public int nextScene = 0;
+    public GameObject[] scenes = new GameObject[5];
 
 
     SpriteRenderer curtainRenderer;
@@ -16,13 +18,14 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     // Keep track of transition state
     public bool isTransiting = false;
     public bool isRelocateComplete = false;
+    public float curtainOpacSpeed = 0.005f;
 
-    bool isThisScenePassed = false;
+    public bool isThisScenePassed = false;
 
 
 
 	// Use this for initialization
-	void Start () {
+    void Start () {
         curtainRenderer = cameraObj.transform.GetChild(0).GetComponent<SpriteRenderer>();
         startingPoint = nextSceneObj.transform.GetChild(0);
 	}
@@ -30,6 +33,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(nextSceneObj);
 
         CheckCondition();
 
@@ -44,16 +48,22 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
                 // Fade in the black curtain
                 // so that camera view fades to black.
-                if (curtainOpacity < 0.99f){
-                    curtainOpacity += 0.01f;
+                if (curtainOpacity < 1 - curtainOpacSpeed){
+                    curtainOpacity += curtainOpacSpeed;
                     curtainRenderer.color = new Color(curtainRenderer.color.r, curtainRenderer.color.g, curtainRenderer.color.b, curtainOpacity);
                 }else{
 
                     // After camera view faded to black,
                     // relocate player and camera to the new position.
                     //player.transform.position = targetPosObj.transform.position;
+                    startingPoint = nextSceneObj.transform.GetChild(0);
                     cameraObj.transform.position = startingPoint.position;
-
+                    if (nextScene < 4){
+                        nextScene += 1;
+                        nextSceneObj = scenes[nextScene];
+                    }else if(nextScene == 4){
+                        nextScene++;
+                    }
                     isRelocateComplete = true;
                 }
 
@@ -61,8 +71,8 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
                 // After completing relocating player and camera,
                 // black curtain fades out so that camera view comes back.
-                if (curtainOpacity > 0.01f){
-                    curtainOpacity -= 0.01f;
+                if (curtainOpacity > curtainOpacSpeed){
+                    curtainOpacity -= curtainOpacSpeed;
                     curtainRenderer.color = new Color(curtainRenderer.color.r, curtainRenderer.color.g, curtainRenderer.color.b, curtainOpacity);
                 }else{
 
@@ -71,6 +81,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
                     // Transition complete.
                     isTransiting = false;
                     isRelocateComplete = false;
+                    isThisScenePassed = false;
                 }
             }
         }
@@ -79,7 +90,9 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
     void CheckCondition(){
 
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space) && nextScene <= 4){
+
+            Debug.Log(isThisScenePassed);
 
             if (!isThisScenePassed)
             {
