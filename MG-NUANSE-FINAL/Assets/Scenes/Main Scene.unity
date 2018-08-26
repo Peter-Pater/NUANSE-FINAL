@@ -723,7 +723,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.062443554, y: -1.186419}
+  m_Offset: {x: -0.062443554, y: -1.2050722}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -734,7 +734,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8506821, y: 2.0273867}
+  m_Size: {x: 1.8506821, y: 1.9900802}
   m_EdgeRadius: 0
 --- !u!50 &735937303
 Rigidbody2D:
@@ -768,7 +768,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   halfCandle: {fileID: 21300000, guid: 4fddcb02d8ebd42d2ab20466778900cc, type: 3}
+  almostCandle: {fileID: 21300000, guid: 81d26a6a39f574201a87b7b00f2c10b3, type: 3}
   fullCandle: {fileID: 21300000, guid: 274d65972d58d4b33b8b193170b6a109, type: 3}
+  deadCandle: {fileID: 21300000, guid: 56b74e572d954475a925d45161f51ecd, type: 3}
   bullet: {fileID: 1493623320}
 --- !u!1 &744277690
 GameObject:
@@ -1840,7 +1842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1493623321
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2562,6 +2564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mound_open: {fileID: 21300000, guid: a06eb1cf30bb4418789e82a24daf8aa2, type: 3}
   mound_closed: {fileID: 21300000, guid: 72e8bf433830d43aea2bd640f8999231, type: 3}
+  gun: {fileID: 2146027328}
 --- !u!50 &2076656431
 Rigidbody2D:
   serializedVersion: 4
@@ -3028,7 +3031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e64e43c4a81e47a083c96098a8f29a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canbedragged: 1
+  canbedragged: 0
 --- !u!50 &2146027332
 Rigidbody2D:
   serializedVersion: 4
