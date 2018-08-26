@@ -354,9 +354,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 61878490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496e09eb45d124f75994a3a853fde87e, type: 3}
+  m_Script: {fileID: 11500000, guid: df5ff9b90feb54470b4ef492b77c2cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ringingClip: {fileID: 8300000, guid: 742238ec6962540acbf9dea09aaa4227, type: 3}
+  messageClip: {fileID: 8300000, guid: 08218fe691fd04545a6c51f724bc2c6b, type: 3}
 --- !u!114 &61878498
 MonoBehaviour:
   m_ObjectHideFlags: 0
