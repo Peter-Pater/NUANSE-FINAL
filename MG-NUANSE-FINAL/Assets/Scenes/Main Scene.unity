@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
   sprite2: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
+  conditions: {fileID: 0}
 --- !u!212 &61878495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -920,6 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state2Renderer: {fileID: 2048467439}
+  conditions: {fileID: 2096672538}
 --- !u!1 &445254215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: 4fddcb02d8ebd42d2ab20466778900cc, type: 3}
   sprite2: {fileID: 21300000, guid: 56b74e572d954475a925d45161f51ecd, type: 3}
+  conditions: {fileID: 2096672538}
 --- !u!212 &445254220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1699,6 +1702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
   sprite2: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
+  conditions: {fileID: 0}
 --- !u!1 &801275042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,6 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
   sprite2: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
+  conditions: {fileID: 2096672538}
 --- !u!212 &1117640620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2626,6 +2631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
   sprite2: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
+  conditions: {fileID: 2096672538}
 --- !u!212 &1265761295
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3199,6 +3205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state2Renderer: {fileID: 1383111492}
+  conditions: {fileID: 0}
 --- !u!50 &1457232939
 Rigidbody2D:
   serializedVersion: 4
@@ -3465,6 +3472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
   sprite2: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
+  conditions: {fileID: 2096672538}
 --- !u!212 &1703365687
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3766,6 +3774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
   sprite2: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
+  conditions: {fileID: 2096672538}
 --- !u!212 &1959673212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3820,6 +3829,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1964522027}
   - component: {fileID: 1964522028}
+  - component: {fileID: 1964522031}
+  - component: {fileID: 1964522030}
+  - component: {fileID: 1964522029}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -3885,6 +3897,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!50 &1964522029
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964522026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1964522030
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964522026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4}
+  m_EdgeRadius: 0
+--- !u!114 &1964522031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964522026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fb31ab410a845b78e14f6db9c800d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trans: {fileID: 1870030228}
 --- !u!1 &1982477010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,6 +3993,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2032879216}
+  - component: {fileID: 2032879217}
   m_Layer: 0
   m_Name: Scene 4
   m_TagString: Untagged
@@ -3949,6 +4019,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032879217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032879215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0965e320235844b3a8841f3586c6e68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionsToMeet: 1
+  conditionsMet: 0
+  trans: {fileID: 1870030228}
 --- !u!1 &2038686262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,6 +4308,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2096672537}
+  - component: {fileID: 2096672538}
   m_Layer: 0
   m_Name: Scene 3
   m_TagString: Untagged
@@ -4253,6 +4338,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2096672538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2096672536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0965e320235844b3a8841f3586c6e68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionsToMeet: 6
+  conditionsMet: 0
+  trans: {fileID: 1870030228}
 --- !u!1 &2109991507
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,6 +4582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: b0ae8053ab5ca4ba2800454311c9491e, type: 3}
   sprite2: {fileID: 21300000, guid: e35bbab3e003749949f8f7689e64f22c, type: 3}
+  conditions: {fileID: 0}
 --- !u!61 &2114484486
 BoxCollider2D:
   m_ObjectHideFlags: 0

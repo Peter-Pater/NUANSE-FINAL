@@ -14,16 +14,25 @@ public class TelephoneStateMachine : MonoBehaviour {
     public AudioClip messageClip;
     AudioSource myAudioPlayer;
 
+    bool isMessagePlaying = false;
+    TransConditions conditions;
+
 
 	// Use this for initialization
 	void Start () {
         myAudioPlayer = GetComponent<AudioSource>();
+        conditions = transform.parent.GetComponent<TransConditions>();
 	}
 	
 
 	// Update is called once per frame
 	void Update () {
-		
+        if (isMessagePlaying){
+            if (!myAudioPlayer.isPlaying){
+                conditions.conditionsMet += 1;
+                isMessagePlaying = false;
+            }
+        }
 	}
 
 
@@ -42,6 +51,8 @@ public class TelephoneStateMachine : MonoBehaviour {
             myAudioPlayer.clip = messageClip;
             myAudioPlayer.loop = false;
             myAudioPlayer.Play();
+
+            isMessagePlaying = true;
         }
     }
 }

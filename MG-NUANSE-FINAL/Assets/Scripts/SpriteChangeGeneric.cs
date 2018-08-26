@@ -8,6 +8,10 @@ public class SpriteChangeGeneric : MonoBehaviour {
     public Sprite sprite2;
     private bool noChange = false;
 
+    public TransConditions conditions;
+    bool isConditionCounted = false;
+
+
 	// Use this for initialization
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = sprite1;
@@ -28,6 +32,12 @@ public class SpriteChangeGeneric : MonoBehaviour {
 
         if (detectMode() == -1){
             Debug.Log("Wrong tag!");
+        }
+
+
+        if (conditions != null && !isConditionCounted){
+            conditions.conditionsMet += 1;
+            isConditionCounted = true;
         }
 	}
 
