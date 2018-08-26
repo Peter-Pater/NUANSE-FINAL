@@ -39,8 +39,16 @@ public class DragMap : MonoBehaviour {
         //Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
         //Debug.Log(transform.position);
         offset = mouseDownPositionX - Input.mousePosition.x;
-        camera.transform.position = new Vector3(camera.transform.position.x + offset * 0.02f, camera.transform.position.y, camera.transform.position.z);
+        Debug.Log(offset);
+        if (!((offset < 0 && camera.transform.position.x <= -0.7) || (offset > 0 && camera.transform.position.x >= 6.8))){ //0.3 to reconcile
+            if (offset < -4){
+                offset = -4;
+            }else if(offset > 4){
+                offset = 4;
+            }
+            camera.transform.position = new Vector3(camera.transform.position.x + offset * 0.1f, camera.transform.position.y, camera.transform.position.z);
+        }
         mouseDownPositionX = Input.mousePosition.x;
-
+        Debug.Log(camera.transform.position.x);
     }
 }
