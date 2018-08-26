@@ -14,8 +14,8 @@ public class MouseDrag : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		OnMouseDown();
-		OnMouseDrag();
+		//OnMouseDown();
+		//OnMouseDrag();
         toThrowGun();
 	}
 		
@@ -26,9 +26,9 @@ public class MouseDrag : MonoBehaviour {
 		
 	void OnMouseDrag(){
 		if (canbedragged){
-		Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-		Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
-		transform.position = cursorPosition;
+        	Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        	Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
+        	transform.position = cursorPosition;
 	    }
 	}
 

@@ -40,8 +40,8 @@ public class Click : MonoBehaviour {
 			clickScript4.footprintvalues[0] = 1;
 		}
 		else if (gameObject.name == "footprint1") {
-            fade = true;
 			if (footprintvalues[0] == 1) {
+                fade = true;
 				footprintvalues[1] = 1;
 				clickScript2 = footPrint2.GetComponent<Click>();
 				clickScript2.footprintvalues[1] = 1;
@@ -54,8 +54,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint2") {
-            fade = true;
 			if (BeforeAllOne(2)) {
+                fade = true;
 				footprintvalues[2] = 1;
 				clickScript3 = footPrint3.GetComponent<Click>();
 				clickScript3.footprintvalues[2] = 1;
@@ -65,8 +65,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint3") {
-            fade = true;
 			if (BeforeAllOne(3)){
+                fade = true;
 				footprintvalues[3] = 1;
 				clickScript4 = footPrint4.GetComponent<Click>();
 				clickScript4.footprintvalues[3] = 1;
@@ -74,8 +74,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint4") {
-            fade = true;
 			if (BeforeAllOne(4)){
+                fade = true;
 				footprintvalues[4] = 1;
                 GameObject.Find("mound").GetComponent<SpriteChangeMound>().allowMound = true;
 			}
