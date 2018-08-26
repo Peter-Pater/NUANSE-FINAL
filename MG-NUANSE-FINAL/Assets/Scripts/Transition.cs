@@ -8,7 +8,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     public GameObject nextSceneObj;
     Transform startingPoint;
     public int nextScene = 0;
-    public GameObject[] scenes = new GameObject[5];
+    public GameObject[] scenes = new GameObject[6];
     public bool transitCommand = false;
 
 
@@ -59,10 +59,10 @@ public class Transition : MonoBehaviour { // The script makes transition into th
                     //player.transform.position = targetPosObj.transform.position;
                     startingPoint = nextSceneObj.transform.GetChild(0);
                     cameraObj.transform.position = startingPoint.position;
-                    if (nextScene < 4){
+                    if (nextScene < 5){
                         nextScene += 1;
                         nextSceneObj = scenes[nextScene];
-                    }else if(nextScene == 4){
+                    }else if(nextScene == 5){
                         nextScene++;
                     }
                     isRelocateComplete = true;
@@ -92,7 +92,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
 
     void CheckCondition(){
 
-        if ((transitCommand == true || Input.GetKeyDown("space")) && nextScene <= 4){
+        if ((transitCommand == true || Input.GetKeyDown("space")) && nextScene <= 5){
 
             //Debug.Log(isThisScenePassed);
 
