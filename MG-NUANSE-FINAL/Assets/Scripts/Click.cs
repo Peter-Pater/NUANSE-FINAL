@@ -14,6 +14,8 @@ public class Click : MonoBehaviour {
 	private Click clickScript3;
 	private Click clickScript4;
 
+    public bool fade = false;
+
 	// Use this for initializastion
 	void Start () {
 		
@@ -21,13 +23,12 @@ public class Click : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        footPrintFadeOut();		
 	}
 	
 	void OnMouseDown(){
 		if (gameObject.name == "footprint0") {
-            footPrintFadeOut();
-			Destroy(gameObject);
+            fade = true;
 			footprintvalues[0] = 1;
 			clickScript1 = footPrint1.GetComponent<Click>();
 			clickScript1.footprintvalues[0] = 1;
@@ -39,9 +40,8 @@ public class Click : MonoBehaviour {
 			clickScript4.footprintvalues[0] = 1;
 		}
 		else if (gameObject.name == "footprint1") {
+            fade = true;
 			if (footprintvalues[0] == 1) {
-                footPrintFadeOut();
-				Destroy(gameObject);
 				footprintvalues[1] = 1;
 				clickScript2 = footPrint2.GetComponent<Click>();
 				clickScript2.footprintvalues[1] = 1;
@@ -54,9 +54,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint2") {
+            fade = true;
 			if (BeforeAllOne(2)) {
-                footPrintFadeOut();
-				Destroy(gameObject);
 				footprintvalues[2] = 1;
 				clickScript3 = footPrint3.GetComponent<Click>();
 				clickScript3.footprintvalues[2] = 1;
@@ -66,9 +65,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint3") {
+            fade = true;
 			if (BeforeAllOne(3)){
-                footPrintFadeOut();
-				Destroy(gameObject);
 				footprintvalues[3] = 1;
 				clickScript4 = footPrint4.GetComponent<Click>();
 				clickScript4.footprintvalues[3] = 1;
@@ -76,9 +74,8 @@ public class Click : MonoBehaviour {
 		}
 		
 		else if (gameObject.name == "footprint4") {
+            fade = true;
 			if (BeforeAllOne(4)){
-                footPrintFadeOut();
-				Destroy(gameObject);
 				footprintvalues[4] = 1;
                 GameObject.Find("mound").GetComponent<SpriteChangeMound>().allowMound = true;
 			}
@@ -97,10 +94,11 @@ public class Click : MonoBehaviour {
 	}
 
     void footPrintFadeOut(){
-        //float a = 1;
-        //while (a > 0.01){
-        //    gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, a);
-        //    a -= 0.0000001f;
-        //}
+        if (fade == true && gameObject.GetComponent<SpriteRenderer>().color.a >= 0.01f){
+            gameObject.GetComponent<SpriteRenderer>().color -= new Color(1, 1, 1, 1.5f * Time.deltaTime);
+        }else if (gameObject.GetComponent<SpriteRenderer>().color.a < 0.01f){
+            fade = false;
+            Destroy(gameObject);   
+        }
     }
 }
