@@ -32,7 +32,6 @@ public class MouseDrag : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-        Debug.Log("Collide");
         if (collision.gameObject.name == "Well")
         {
             Destroy(gameObject);

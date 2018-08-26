@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sprite_Change_Mode_Multi
+  - Sprite_Change_Mode_Single
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class SpriteChangeMound: MonoBehaviour {
     public Sprite mound_open;
     public Sprite mound_closed;
 
+    public GameObject gun;
+
     private int STATE = MOUNDCLOSED;
 
     // Use this for initialization
@@ -18,22 +20,20 @@ public class SpriteChangeMound: MonoBehaviour {
         GetComponent<SpriteRenderer>().sprite = mound_closed;
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
 
-        //Debug.Log(gameObject.name);
+        Debug.Log("clicked!");
 
         if (STATE == MOUNDCLOSED)
         {
             GetComponent<SpriteRenderer>().sprite = mound_open;
             STATE = MOUNDOPEN;
-        }
-
-        if (STATE == MOUNDOPEN)
+        }else if (STATE == MOUNDOPEN)
         {
-            GameObject.Find("gun").GetComponent<Renderer>().enabled = true;
+            gun.SetActive(true);
             MouseDrag MouseDragScript;
-            MouseDragScript = GameObject.Find("gun").GetComponent<MouseDrag>();
+            MouseDragScript = gun.GetComponent<MouseDrag>();
             MouseDragScript.canbedragged = true;
             Debug.Log("drag now");
         }
