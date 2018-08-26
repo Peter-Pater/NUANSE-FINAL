@@ -6,6 +6,7 @@ public class MouseDrag : MonoBehaviour {
     private Vector3 screenPoint;
 	private Vector3 offset;
 	public bool canbedragged = false;
+    public bool canBeDestroyed = false;
     private bool throwGun = false;
 	// Use this for initialization
 	void Start () {
@@ -40,7 +41,7 @@ public class MouseDrag : MonoBehaviour {
             throwGun = true;
         }
 
-        if (collision.gameObject.name == "gun_catcher" && canbedragged == false){
+        if (collision.gameObject.name == "gun_catcher" && canBeDestroyed == true){
             GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
             Destroy(gameObject);
         }
@@ -48,10 +49,12 @@ public class MouseDrag : MonoBehaviour {
 
     void toThrowGun(){
         if (throwGun == true){
-            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("gun_thrower").transform.position, 5 * Time.deltaTime);   
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("gun_thrower").transform.position, 5 * Time.deltaTime);
         }
 
         if (transform.position == GameObject.Find("gun_thrower").transform.position){
+            canBeDestroyed = true;
+            GameObject.Find("Well").GetComponent<BoxCollider2D>().enabled = false;
             throwGun = false;
             GetComponent<Rigidbody2D>().gravityScale = 1;
         }
