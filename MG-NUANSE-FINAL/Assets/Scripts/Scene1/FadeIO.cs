@@ -4,6 +4,7 @@ using System.Collections;
 
 public class FadeIO : MonoBehaviour {
 
+    const int NOFADE = 0;
     const int FADEIN = 1;
     const int FADEINANDOUT = 2;
     const int FADEOUT = 3;
@@ -24,7 +25,7 @@ public class FadeIO : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!textShown) {
+        if (!textShown && fadeMode == FADEIN || fadeMode == FADEINANDOUT) {
 		    StartCoroutine(FadeTextToFullAlpha(fadeSpeed, GetComponent<TextMesh>()));
 	    }
 
@@ -32,8 +33,8 @@ public class FadeIO : MonoBehaviour {
             StartCoroutine(FadeTextToZeroAlpha(fadeSpeed, GetComponent<TextMesh>()));
         }
 
-        if (fadeMode == FADEOUT){
-            
+        if (fadeMode == FADEOUT && !textHide){
+            StartCoroutine(FadeOut(fadeSpeed, GetComponent<TextMesh>()));
         }
 	}
 	
@@ -45,6 +46,10 @@ public class FadeIO : MonoBehaviour {
 	        yield return null;
 	    }
 		textShown = true;
+        //Debug.Log("Fade in");
+        if (fadeMode == 1){
+            fadeDone = true;    
+        }
 	 }
 	 
      public IEnumerator FadeTextToZeroAlpha(float t, TextMesh i)
@@ -68,6 +73,7 @@ public class FadeIO : MonoBehaviour {
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
             yield return null;
         }
+        //Debug.Log("Fade out");
         textHide = true;
         fadeDone = true;
     }
