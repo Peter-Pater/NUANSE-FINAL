@@ -56,6 +56,7 @@ public class TalkAppear : MonoBehaviour {
                 //validate = GameObject.Find("Text4").GetComponent<FadeIO>().fadeDone;
                 GameObject.Find("Text3").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.Find("Black1").GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
             }   
         }
 	}

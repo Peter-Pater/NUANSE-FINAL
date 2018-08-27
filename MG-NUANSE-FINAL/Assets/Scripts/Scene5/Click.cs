@@ -13,11 +13,13 @@ public class Click : MonoBehaviour {
 	private Click clickScript2;
 	private Click clickScript3;
 	private Click clickScript4;
+    public AudioSource myAudio;
 
     public bool fade = false;
 
 	// Use this for initializastion
 	void Start () {
+        myAudio = GetComponent<AudioSource>();
 		
 	}
 	
@@ -96,9 +98,11 @@ public class Click : MonoBehaviour {
     void footPrintFadeOut(){
         if (fade == true && gameObject.GetComponent<SpriteRenderer>().color.a >= 0.01f){
             gameObject.GetComponent<SpriteRenderer>().color -= new Color(1, 1, 1, 1.5f * Time.deltaTime);
+            myAudio.Play();
         }else if (gameObject.GetComponent<SpriteRenderer>().color.a < 0.01f){
             fade = false;
-            Destroy(gameObject);   
+            //Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
