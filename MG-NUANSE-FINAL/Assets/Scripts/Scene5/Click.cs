@@ -15,6 +15,8 @@ public class Click : MonoBehaviour {
 	private Click clickScript4;
     public AudioSource myAudio;
 
+    private bool isPlayed = false;
+
     public bool fade = false;
 
 	// Use this for initializastion
@@ -98,7 +100,10 @@ public class Click : MonoBehaviour {
     void footPrintFadeOut(){
         if (fade == true && gameObject.GetComponent<SpriteRenderer>().color.a >= 0.01f){
             gameObject.GetComponent<SpriteRenderer>().color -= new Color(1, 1, 1, 1.5f * Time.deltaTime);
-            myAudio.Play();
+            if(!isPlayed){
+                myAudio.Play();
+                isPlayed = true;
+            }
         }else if (gameObject.GetComponent<SpriteRenderer>().color.a < 0.01f){
             fade = false;
             //Destroy(gameObject);

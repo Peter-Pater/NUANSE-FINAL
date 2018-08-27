@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpriteChangeMound: MonoBehaviour {
 
+    const int NOMOUND = 0;
     const int MOUNDCLOSED = 1;
     const int MOUNDOPEN = 2;
 
