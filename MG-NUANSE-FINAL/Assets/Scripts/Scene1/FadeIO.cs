@@ -6,6 +6,7 @@ public class FadeIO : MonoBehaviour {
 
     const int FADEIN = 1;
     const int FADEINANDOUT = 2;
+    const int FADEOUT = 3;
 
     bool textShown = false;
     bool textHide = false;
@@ -29,6 +30,10 @@ public class FadeIO : MonoBehaviour {
 
         if (textShown && fadeMode == FADEINANDOUT && !textHide){
             StartCoroutine(FadeTextToZeroAlpha(fadeSpeed, GetComponent<TextMesh>()));
+        }
+
+        if (fadeMode == FADEOUT){
+            
         }
 	}
 	
@@ -54,4 +59,17 @@ public class FadeIO : MonoBehaviour {
         textHide = true;
         fadeDone = true;
      }
+
+    public IEnumerator FadeOut(float t, TextMesh i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
+        textHide = true;
+        fadeDone = true;
+    }
+
 }

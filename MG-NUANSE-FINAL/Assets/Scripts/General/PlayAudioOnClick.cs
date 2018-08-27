@@ -7,6 +7,11 @@ public class PlayAudioOnClick : MonoBehaviour {
     AudioSource myAudioPlayer;
     bool isAudioPlayed = false;
 
+    const int SINGLE = 1;
+    const int MULTI = 2;
+
+    public int MODE = SINGLE;
+
 	// Use this for initialization
 	void Start () {
         myAudioPlayer = GetComponent<AudioSource>();
@@ -22,7 +27,9 @@ public class PlayAudioOnClick : MonoBehaviour {
     {
         if (!isAudioPlayed){
             myAudioPlayer.Play();
-            isAudioPlayed = true;
+            if (MODE == SINGLE){
+                isAudioPlayed = true;   
+            }
         }
     }
 }
