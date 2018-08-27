@@ -9,6 +9,8 @@ public class SpriteChangeCandle : MonoBehaviour {
     const int ALMOST_CANDLE = 3;
     const int FULLCANDLE = 4;
     const int DEAD_CANDLE = 5;
+    const int BACK_IN_CLOSET = 6;
+    const int SCENE_END = 7;
 
     public Sprite halfCandle;
     public Sprite almostCandle;
@@ -27,8 +29,18 @@ public class SpriteChangeCandle : MonoBehaviour {
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = halfCandle;
 	}
-	
-    private void OnMouseDown()
+
+	private void Update(){
+        if (STATE == BACK_IN_CLOSET){
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("candle_position").transform.position, 5 * Time.deltaTime);
+            if (transform.position == GameObject.Find("candle_position").transform.position){
+                STATE = SCENE_END;
+                GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
+            }
+        }
+	}
+
+	private void OnMouseDown()
     {
 
         //Debug.Log(gameObject.name);
@@ -64,6 +76,8 @@ public class SpriteChangeCandle : MonoBehaviour {
                 offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
                 allowDragging = true;
                 break;
+            default:
+                break;
         }
     }
 
@@ -76,10 +90,11 @@ public class SpriteChangeCandle : MonoBehaviour {
     }
 
 	private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.name == "candleCollider"){
+        if (collision.gameObject.name == "candle_collider"){
+            Debug.Log("Collide!");
             if (GameObject.Find("closet_close_2").GetComponent<SpriteChangeGeneric>().num == 2){
                 allowDragging = false;
-                Vector3.MoveTowards(transform.position, collision.gameObject.transform.position, 5 * Time.deltaTime);
+                STATE = BACK_IN_CLOSET;
             }
         }
 	}
