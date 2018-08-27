@@ -4,8 +4,10 @@ using System.Collections;
 
 public class FadeIO : MonoBehaviour {
 
+    const int NOFADE = 0;
     const int FADEIN = 1;
     const int FADEINANDOUT = 2;
+    const int FADEOUT = 3;
 
     bool textShown = false;
     bool textHide = false;
@@ -18,17 +20,21 @@ public class FadeIO : MonoBehaviour {
 
 
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!textShown) {
+        if (!textShown && fadeMode == FADEIN || fadeMode == FADEINANDOUT) {
 		    StartCoroutine(FadeTextToFullAlpha(fadeSpeed, GetComponent<TextMesh>()));
 	    }
 
         if (textShown && fadeMode == FADEINANDOUT && !textHide){
             StartCoroutine(FadeTextToZeroAlpha(fadeSpeed, GetComponent<TextMesh>()));
+        }
+
+        if (fadeMode == FADEOUT && !textHide){
+            StartCoroutine(FadeOut(fadeSpeed, GetComponent<TextMesh>()));
         }
 	}
 	
@@ -40,11 +46,11 @@ public class FadeIO : MonoBehaviour {
 	        yield return null;
 	    }
 		textShown = true;
+        //Debug.Log("Fade in");
+        if (fadeMode == 1){
+            fadeDone = true;    
+        }
 	 }
-
-    public IEnumerator FadePause(){
-        yield return new WaitForSeconds(showtime);
-    }
 	 
      public IEnumerator FadeTextToZeroAlpha(float t, TextMesh i)
      {
@@ -58,4 +64,18 @@ public class FadeIO : MonoBehaviour {
         textHide = true;
         fadeDone = true;
      }
+
+    public IEnumerator FadeOut(float t, TextMesh i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
+        //Debug.Log("Fade out");
+        textHide = true;
+        fadeDone = true;
+    }
+
 }

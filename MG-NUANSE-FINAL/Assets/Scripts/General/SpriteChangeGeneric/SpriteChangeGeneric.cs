@@ -69,7 +69,9 @@ public class SpriteChangeGeneric : MonoBehaviour {
 
     private void candlesSetActive(bool active){
         if (isCloset){
-            GameObject.Find("candle_collider").GetComponent<BoxCollider2D>().enabled = active;
+            if (gameObject.name == "closet_close_2"){
+                GameObject.Find("candle_collider").GetComponent<BoxCollider2D>().enabled = active;   
+            }
             if (items != null){
                 items.SetActive(active);   
             }
