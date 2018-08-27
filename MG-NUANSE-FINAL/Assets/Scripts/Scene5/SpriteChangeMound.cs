@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpriteChangeMound: MonoBehaviour {
 
-    const int NOMOUND = 0;
     const int MOUNDCLOSED = 1;
     const int MOUNDOPEN = 2;
+    public AudioSource myAudio;
 
     public bool allowMound = false;
 
@@ -28,10 +28,12 @@ public class SpriteChangeMound: MonoBehaviour {
 
         //Debug.Log("clicked!");
         if (allowMound == true){
+
             if (STATE == MOUNDCLOSED)
             {
                 GetComponent<SpriteRenderer>().sprite = mound_open;
                 STATE = MOUNDOPEN;
+                myAudio.Play();
             }
             else if (STATE == MOUNDOPEN)
             {
@@ -39,7 +41,8 @@ public class SpriteChangeMound: MonoBehaviour {
                 MouseDrag MouseDragScript;
                 MouseDragScript = gun.GetComponent<MouseDrag>();
                 MouseDragScript.canbedragged = true;
-                Debug.Log("drag now");
+                //Debug.Log("drag now");
+                myAudio.Play();
             }   
         }
 

@@ -43,7 +43,7 @@ public class MouseDrag : MonoBehaviour {
 
         if (collision.gameObject.name == "gun_catcher" && canBeDestroyed == true){
             GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 	}
 
