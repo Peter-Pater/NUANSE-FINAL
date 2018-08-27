@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class changeLight : MonoBehaviour {
-    public GameObject lamp_Wall;
-    public GameObject light1;
+    public GameObject myLight;
 
 	// Use this for initialization
 	void Start () {
@@ -13,13 +12,11 @@ public class changeLight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (gameObject.GetComponent<SpriteRenderer>().color.a >= 0.99f){
+            myLight.SetActive(true);
+        }else if (gameObject.GetComponent<SpriteRenderer>().color.a <= 0.01f){
+            myLight.SetActive(false);
+        }
 	}
 
-	private void OnMouseDown()
-	{
-        lamp_Wall.SetActive(true);
-        light1.SetActive(false);
-        gameObject.SetActive(false);
-	}
 }
