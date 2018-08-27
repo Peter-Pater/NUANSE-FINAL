@@ -12,9 +12,6 @@ public class FadeInOut : MonoBehaviour
 	public bool fadeOutOnStart = false;
 	private bool logInitialFadeSequence = false; 
  
- 
- 
- 
 	// store colours
 	private Color[] colors; 
  
@@ -22,7 +19,8 @@ public class FadeInOut : MonoBehaviour
 	IEnumerator Start ()
 	{
 		//yield return null; 
-		yield return new WaitForSeconds (fadeDelay); 
+		yield return new WaitForSeconds (fadeDelay);
+        Debug.Log("Haha");
  
 		if (fadeInOnStart)
 		{

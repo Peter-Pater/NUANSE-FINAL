@@ -67,7 +67,6 @@ public class Transition : MonoBehaviour { // The script makes transition into th
                     }
                     isRelocateComplete = true;
                 }
-
             }else{
 
                 // After completing relocating player and camera,

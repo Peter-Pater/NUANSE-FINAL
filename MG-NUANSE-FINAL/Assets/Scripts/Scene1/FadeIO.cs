@@ -18,7 +18,7 @@ public class FadeIO : MonoBehaviour {
 
 
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -41,10 +41,6 @@ public class FadeIO : MonoBehaviour {
 	    }
 		textShown = true;
 	 }
-
-    public IEnumerator FadePause(){
-        yield return new WaitForSeconds(showtime);
-    }
 	 
      public IEnumerator FadeTextToZeroAlpha(float t, TextMesh i)
      {

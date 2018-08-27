@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDone: 0
-  fadeMode: 1
+  fadeMode: 2
   showtime: 2
   fadeSpeed: 2
 --- !u!1 &539043628
@@ -4583,8 +4583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811a123f300d843d080613297bb4d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDelay: 3
-  fadeTime: 1
+  fadeDelay: 8
+  fadeTime: 2
   fadeInOnStart: 0
   fadeOutOnStart: 1
 --- !u!1 &1153174117
