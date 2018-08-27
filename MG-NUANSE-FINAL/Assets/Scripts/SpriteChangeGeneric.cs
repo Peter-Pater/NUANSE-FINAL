@@ -6,6 +6,7 @@ public class SpriteChangeGeneric : MonoBehaviour {
     
     public Sprite sprite1;
     public Sprite sprite2;
+    public int num;
     private bool noChange = false;
 
     public TransConditions conditions;
@@ -52,11 +53,14 @@ public class SpriteChangeGeneric : MonoBehaviour {
     }
 
     private void changeSprite(){
+        Debug.Log(gameObject.name);
         if (GetComponent<SpriteRenderer>().sprite == sprite1){
             GetComponent<SpriteRenderer>().sprite = sprite2;
+            num = 2;
         }
         else{
             GetComponent<SpriteRenderer>().sprite = sprite1;
+            num = 1;
         }
     }
 }

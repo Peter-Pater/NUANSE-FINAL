@@ -49,6 +49,6 @@ public class DragMap : MonoBehaviour {
             camera.transform.position = new Vector3(camera.transform.position.x + offset * 0.1f, camera.transform.position.y, camera.transform.position.z);
         }
         mouseDownPositionX = Input.mousePosition.x;
-        Debug.Log(camera.transform.position.x);
+        //Debug.Log(camera.transform.position.x);
     }
 }

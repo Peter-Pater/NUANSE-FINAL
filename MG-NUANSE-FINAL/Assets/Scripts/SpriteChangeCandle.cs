@@ -15,9 +15,13 @@ public class SpriteChangeCandle : MonoBehaviour {
     public Sprite fullCandle;
     public Sprite deadCandle;
 
+    private Vector3 screenPoint;
+    private Vector3 offset;
+
     private int STATE = HALF_CANDLE;
 
     public GameObject bullet;
+    public bool allowDragging = false;
 
 	// Use this for initialization
 	void Start () {
@@ -29,26 +33,54 @@ public class SpriteChangeCandle : MonoBehaviour {
 
         //Debug.Log(gameObject.name);
 
-        if (STATE == HALF_CANDLE){
-            bullet.SetActive(true);
-            STATE = BULLET;
-            GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.9439293f);
-            GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 2.512366f);
-        }else if (STATE == BULLET){
-            GetComponent<SpriteRenderer>().sprite = almostCandle;
-            GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.6454784f);
-            GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.109268f);
-            bullet.SetActive(false);
-            STATE = ALMOST_CANDLE;
-        }else if(STATE == ALMOST_CANDLE){
-            GetComponent<SpriteRenderer>().sprite = fullCandle;
-            GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.3097228f);
-            GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.780779f);
-            STATE = FULLCANDLE;
-        }else if(STATE == FULLCANDLE){
-            GetComponent<SpriteRenderer>().sprite = deadCandle;
-            STATE = DEAD_CANDLE;
-        }
 
+        switch (STATE)
+        {
+            case HALF_CANDLE:
+                bullet.SetActive(true);
+                STATE = BULLET;
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.9439293f);
+                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 2.512366f);
+                break;
+            case BULLET:
+                GetComponent<SpriteRenderer>().sprite = almostCandle;
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.6454784f);
+                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.109268f);
+                bullet.SetActive(false);
+                STATE = ALMOST_CANDLE;
+                break;
+            case ALMOST_CANDLE:
+                GetComponent<SpriteRenderer>().sprite = fullCandle;
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.3097228f);
+                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.780779f);
+                STATE = FULLCANDLE;
+                break;
+            case FULLCANDLE:
+                GetComponent<SpriteRenderer>().sprite = deadCandle;
+                STATE = DEAD_CANDLE;
+                break;
+            case DEAD_CANDLE:
+                screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+                allowDragging = true;
+                break;
+        }
     }
+
+    void OnMouseDrag(){
+        if (allowDragging){
+            Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+            Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
+            transform.position = cursorPosition;
+        }
+    }
+
+	private void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.name == "candleCollider"){
+            if (GameObject.Find("closet_close_2").GetComponent<SpriteChangeGeneric>().num == 2){
+                allowDragging = false;
+                Vector3.MoveTowards(transform.position, collision.gameObject.transform.position, 5 * Time.deltaTime);
+            }
+        }
+	}
 }
