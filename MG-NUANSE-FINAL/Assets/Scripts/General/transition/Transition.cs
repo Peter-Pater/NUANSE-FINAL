@@ -22,6 +22,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     public float curtainOpacSpeed = 0.005f;
 
     public bool isThisScenePassed = false;
+    AudioSource myAudio;
 
 
 
@@ -29,6 +30,7 @@ public class Transition : MonoBehaviour { // The script makes transition into th
     void Start () {
         curtainRenderer = cameraObj.transform.GetChild(0).GetComponent<SpriteRenderer>();
         startingPoint = nextSceneObj.transform.GetChild(0);
+        myAudio = GetComponent<AudioSource>();
 	}
 	
 
@@ -99,9 +101,16 @@ public class Transition : MonoBehaviour { // The script makes transition into th
             {
                 isTransiting = true;
                 isThisScenePassed = true;
+                StartCoroutine(delay(1.6f));
             }
 
         }
     }
+
+    public IEnumerator delay(float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        myAudio.Play();
+    }
+
 
 }
