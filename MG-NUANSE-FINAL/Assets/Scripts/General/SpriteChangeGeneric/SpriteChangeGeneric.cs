@@ -6,11 +6,14 @@ public class SpriteChangeGeneric : MonoBehaviour {
     
     public Sprite sprite1;
     public Sprite sprite2;
-    public int num;
+
+    public bool isCloset = false;
     private bool noChange = false;
 
     public TransConditions conditions;
     bool isConditionCounted = false;
+
+    public GameObject items;
 
 
 	// Use this for initialization
@@ -56,11 +59,20 @@ public class SpriteChangeGeneric : MonoBehaviour {
         Debug.Log(gameObject.name);
         if (GetComponent<SpriteRenderer>().sprite == sprite1){
             GetComponent<SpriteRenderer>().sprite = sprite2;
-            num = 2;
+            candlesSetActive(true);
         }
         else{
             GetComponent<SpriteRenderer>().sprite = sprite1;
-            num = 1;
+            candlesSetActive(false);
+        }
+    }
+
+    private void candlesSetActive(bool active){
+        if (isCloset){
+            GameObject.Find("candle_collider").GetComponent<BoxCollider2D>().enabled = active;
+            if (items != null){
+                items.SetActive(active);   
+            }
         }
     }
 }

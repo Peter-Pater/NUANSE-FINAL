@@ -51,20 +51,20 @@ public class SpriteChangeCandle : MonoBehaviour {
             case HALF_CANDLE:
                 bullet.SetActive(true);
                 STATE = BULLET;
-                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.9439293f);
-                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 2.512366f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(0.003006041f, -0.4334226f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.9867461f, 1.962591f);
                 break;
             case BULLET:
                 GetComponent<SpriteRenderer>().sprite = almostCandle;
-                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.6454784f);
-                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.109268f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.01008403f, -0.239692f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.8558465f, 2.40241f);
                 bullet.SetActive(false);
                 STATE = ALMOST_CANDLE;
                 break;
             case ALMOST_CANDLE:
                 GetComponent<SpriteRenderer>().sprite = fullCandle;
-                GetComponent<BoxCollider2D>().offset = new Vector2(-0.06244355f, -0.3097228f);
-                GetComponent<BoxCollider2D>().size = new Vector2(1.850682f, 3.780779f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(0.01609588f, 0.0437054f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.8034868f, 2.969205f);
                 STATE = FULLCANDLE;
                 break;
             case FULLCANDLE:
@@ -89,13 +89,12 @@ public class SpriteChangeCandle : MonoBehaviour {
         }
     }
 
-	private void OnTriggerEnter2D(Collider2D collision){
+	private void OnTriggerStay2D(Collider2D collision){
         if (collision.gameObject.name == "candle_collider"){
             Debug.Log("Collide!");
-            if (GameObject.Find("closet_close_2").GetComponent<SpriteChangeGeneric>().num == 2){
-                allowDragging = false;
-                STATE = BACK_IN_CLOSET;
-            }
+            transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+            allowDragging = false;
+            STATE = BACK_IN_CLOSET;
         }
 	}
 }
