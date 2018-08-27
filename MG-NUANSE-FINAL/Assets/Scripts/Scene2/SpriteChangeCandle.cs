@@ -12,6 +12,12 @@ public class SpriteChangeCandle : MonoBehaviour {
     const int BACK_IN_CLOSET = 6;
     const int SCENE_END = 7;
 
+    bool cupboard_audio_played = false;
+
+    public AudioSource bullet_audio;
+    public AudioSource candle_audio;
+    public AudioSource cupboard_audio;
+
     public Sprite halfCandle;
     public Sprite almostCandle;
     public Sprite fullCandle;
@@ -51,6 +57,7 @@ public class SpriteChangeCandle : MonoBehaviour {
             case HALF_CANDLE:
                 bullet.SetActive(true);
                 STATE = BULLET;
+                bullet_audio.Play();
                 GetComponent<BoxCollider2D>().offset = new Vector2(0.003006041f, -0.4334226f);
                 GetComponent<BoxCollider2D>().size = new Vector2(0.9867461f, 1.962591f);
                 break;
@@ -60,16 +67,19 @@ public class SpriteChangeCandle : MonoBehaviour {
                 GetComponent<BoxCollider2D>().size = new Vector2(0.8558465f, 2.40241f);
                 bullet.SetActive(false);
                 STATE = ALMOST_CANDLE;
+                candle_audio.Play();
                 break;
             case ALMOST_CANDLE:
                 GetComponent<SpriteRenderer>().sprite = fullCandle;
                 GetComponent<BoxCollider2D>().offset = new Vector2(0.01609588f, 0.0437054f);
                 GetComponent<BoxCollider2D>().size = new Vector2(0.8034868f, 2.969205f);
                 STATE = FULLCANDLE;
+                candle_audio.Play();
                 break;
             case FULLCANDLE:
                 GetComponent<SpriteRenderer>().sprite = deadCandle;
                 STATE = DEAD_CANDLE;
+                candle_audio.Play();
                 break;
             case DEAD_CANDLE:
                 screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
@@ -95,6 +105,10 @@ public class SpriteChangeCandle : MonoBehaviour {
             transform.localScale = new Vector3(0.4f, 0.4f, 1f);
             allowDragging = false;
             STATE = BACK_IN_CLOSET;
+            if(!cupboard_audio.isPlaying&&cupboard_audio_played==false){
+                cupboard_audio.Play();
+                cupboard_audio_played = true;
+            }
         }
 	}
 }

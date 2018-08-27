@@ -18,8 +18,11 @@ public class DragGeneric : MonoBehaviour {
     public float fadeSpeed = 2f;
     bool isConditionsCounted = false;
 
+    AudioSource myAudio;
+
 	// Use this for initialization
 	void Start() {
+        myAudio = GetComponent<AudioSource>();
 		
 	}
 	
@@ -75,6 +78,7 @@ public class DragGeneric : MonoBehaviour {
             Debug.Log("Hit!");
             canbedragged = false;
             atTarget = true;
+            myAudio.Play();
         }
 	}
 }
