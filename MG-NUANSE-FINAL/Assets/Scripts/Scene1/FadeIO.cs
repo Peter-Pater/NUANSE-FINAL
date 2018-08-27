@@ -3,8 +3,20 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class FadeIO : MonoBehaviour {
+
+    const int FADEIN = 1;
+    const int FADEINANDOUT = 2;
+
     bool textShown = false;
-	// Use this for initialization
+    bool textHide = false;
+    public bool fadeDone = false;
+    // Use this for initialization
+    public int fadeMode;
+
+    public float showtime;
+    public float fadeSpeed;
+
+
 	void Start () {
 		
 	}
@@ -12,8 +24,12 @@ public class FadeIO : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!textShown) {
-		StartCoroutine(FadeTextToFullAlpha(1f, GetComponent<TextMesh>()));
-	   }
+		    StartCoroutine(FadeTextToFullAlpha(fadeSpeed, GetComponent<TextMesh>()));
+	    }
+
+        if (textShown && fadeMode == FADEINANDOUT && !textHide){
+            StartCoroutine(FadeTextToZeroAlpha(fadeSpeed, GetComponent<TextMesh>()));
+        }
 	}
 	
 	public IEnumerator FadeTextToFullAlpha(float t, TextMesh i) {
@@ -25,14 +41,21 @@ public class FadeIO : MonoBehaviour {
 	    }
 		textShown = true;
 	 }
+
+    public IEnumerator FadePause(){
+        yield return new WaitForSeconds(showtime);
+    }
 	 
-     public IEnumerator FadeTextToZeroAlpha(float t, Text i)
+     public IEnumerator FadeTextToZeroAlpha(float t, TextMesh i)
      {
          i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        yield return new WaitForSeconds(showtime);
          while (i.color.a > 0.0f)
          {
              i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
              yield return null;
          }
+        textHide = true;
+        fadeDone = true;
      }
 }
