@@ -33,21 +33,21 @@ public class ClickDropPill : MonoBehaviour {
     // }
 	
 	IEnumerator Pause() {
-        Debug.Log("Start pause");
+        //Debug.Log("Start pause");
         Time.timeScale = 0;
         float pauseEndTime = Time.realtimeSinceStartup + pauseTime;
         while (Time.realtimeSinceStartup < pauseEndTime){
           yield return 0;
         }
         Time.timeScale = 1f;
-        Debug.Log("Done with pause");
+        //Debug.Log("Done with pause");
 	    StartPause = false;
         enablePill = true;
 	}
 	
 	void OnMouseDown(){
         if (enablePill){
-            Debug.Log("click in drop pill");
+            //Debug.Log("click in drop pill");
             Debug.Log(PillDropped);
             if (!PillDropped){
                 GameObject.Find("pill").GetComponent<SpriteRenderer>().enabled = true;

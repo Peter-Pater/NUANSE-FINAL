@@ -8,6 +8,7 @@ public class MouseDrag : MonoBehaviour {
 	public bool canbedragged = false;
     public bool canBeDestroyed = false;
     private bool throwGun = false;
+    public AudioSource myAudio;
 	// Use this for initialization
 	void Start () {
 		
@@ -42,9 +43,16 @@ public class MouseDrag : MonoBehaviour {
         }
 
         if (collision.gameObject.name == "gun_catcher" && canBeDestroyed == true){
-            GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
+
+        if (collision.gameObject.name == "waterface" && gameObject.GetComponent<SpriteRenderer>().enabled == false){
+            Debug.Log("Water!");
+            myAudio.Play();
+            GetComponent<Rigidbody2D>().gravityScale = 0;
+            GameObject.Find("Transition").GetComponent<Transition>().transitCommand = true;
+        }
+
 	}
 
     void toThrowGun(){
