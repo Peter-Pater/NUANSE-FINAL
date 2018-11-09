@@ -42,6 +42,7 @@ public class SpriteChangeMound: MonoBehaviour {
                 MouseDragScript = gun.GetComponent<MouseDrag>();
                 MouseDragScript.canbedragged = true;
                 //Debug.Log("drag now");
+                allowMound = false;
                 myAudio.Play();
             }   
         }

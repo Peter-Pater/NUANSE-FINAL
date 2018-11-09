@@ -23,6 +23,7 @@ public class TalkAppear : MonoBehaviour {
                 validate = GameObject.Find("Text1").GetComponent<FadeIO>().fadeDone;
                 if (validate == true)
                 {
+                    
                     GameObject.Find("Text1").GetComponent<FadeIO>().fadeMode = 0;
                 }
                 break;
@@ -38,6 +39,20 @@ public class TalkAppear : MonoBehaviour {
                 if (validate == true)
                 {
                     GameObject.Find("Text2").GetComponent<FadeIO>().fadeMode = 0;
+                }
+                break;
+            case 5:
+                validate = GameObject.Find("Text3").GetComponent<FadeIO>().fadeDone;
+                if (validate == true)
+                {
+                    GameObject.Find("Text3").GetComponent<FadeIO>().fadeMode = 0;
+                }
+                break;
+            case 6:
+                validate = GameObject.Find("Text3").GetComponent<FadeIO>().fadeDone;
+                if (validate == true)
+                {
+                    GameObject.Find("Text3").GetComponent<FadeIO>().fadeMode = 0;
                 }
                 break;
         }

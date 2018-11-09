@@ -40,7 +40,7 @@ public class DragMap : MonoBehaviour {
         //Debug.Log(transform.position);
         offset = mouseDownPositionX - Input.mousePosition.x;
         Debug.Log(offset);
-        if (!((offset < 0 && camera.transform.position.x <= -0.7) || (offset > 0 && camera.transform.position.x >= 6.8))){ //0.3 to reconcile
+        if (!((offset < 0 && camera.transform.position.x <= -0.7) || (offset > 0 && camera.transform.position.x >= 8.2))){ //0.3 to reconcile
             if (offset < -4){
                 offset = -4;
             }else if(offset > 4){
@@ -49,6 +49,6 @@ public class DragMap : MonoBehaviour {
             camera.transform.position = new Vector3(camera.transform.position.x + offset * 0.1f, camera.transform.position.y, camera.transform.position.z);
         }
         mouseDownPositionX = Input.mousePosition.x;
-        //Debug.Log(camera.transform.position.x);
+        Debug.Log(camera.transform.position.x);
     }
 }

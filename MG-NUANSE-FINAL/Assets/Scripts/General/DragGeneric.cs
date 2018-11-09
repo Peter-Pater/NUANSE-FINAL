@@ -79,6 +79,7 @@ public class DragGeneric : MonoBehaviour {
             canbedragged = false;
             atTarget = true;
             myAudio.Play();
+
         }
 	}
 }

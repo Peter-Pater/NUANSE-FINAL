@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TelephoneStateMachine : MonoBehaviour
 {
-
+    int NOTPICKEDUP = -1;
     int PICKEDUP = 0;
     int RINGING = 1;
     int AUDIOMESSAGEPLAYING = 2;

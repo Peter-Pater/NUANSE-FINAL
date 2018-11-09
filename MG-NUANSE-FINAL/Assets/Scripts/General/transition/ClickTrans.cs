@@ -20,7 +20,8 @@ public class ClickTrans : MonoBehaviour {
 
 
     void OnMouseDown(){
-        if (!isTransHappened){
+        if (!isTransHappened && GameObject.Find("Transition").GetComponent<Transition>().isTransiting == false){
+            Debug.Log("Clicked!");
             trans.transitCommand = true;
             isTransHappened = true;
         }

@@ -40,12 +40,14 @@ public class FadeIO : MonoBehaviour {
 	
 	public IEnumerator FadeTextToFullAlpha(float t, TextMesh i) {
 	    i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-	    while (i.color.a < 1.0f)
-	    {
-	        i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-	        yield return null;
-	    }
-		textShown = true;
+        if (!textShown){
+            while (i.color.a < 1.0f)
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+                yield return null;
+            }
+            textShown = true;
+        }
         //Debug.Log("Fade in");
         if (fadeMode == 1){
             fadeDone = true;    

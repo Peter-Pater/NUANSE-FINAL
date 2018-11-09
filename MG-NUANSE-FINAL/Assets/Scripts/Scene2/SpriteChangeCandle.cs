@@ -58,21 +58,21 @@ public class SpriteChangeCandle : MonoBehaviour {
                 bullet.SetActive(true);
                 STATE = BULLET;
                 bullet_audio.Play();
-                GetComponent<BoxCollider2D>().offset = new Vector2(0.003006041f, -0.4334226f);
-                GetComponent<BoxCollider2D>().size = new Vector2(0.9867461f, 1.962591f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.02588505f, -0.7151861f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.9001524f, 2.180191f);
                 break;
             case BULLET:
                 GetComponent<SpriteRenderer>().sprite = almostCandle;
-                GetComponent<BoxCollider2D>().offset = new Vector2(-0.01008403f, -0.239692f);
-                GetComponent<BoxCollider2D>().size = new Vector2(0.8558465f, 2.40241f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(-0.01008403f, -0.6125971f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.8558465f, 2.473438f);
                 bullet.SetActive(false);
                 STATE = ALMOST_CANDLE;
                 candle_audio.Play();
                 break;
             case ALMOST_CANDLE:
                 GetComponent<SpriteRenderer>().sprite = fullCandle;
-                GetComponent<BoxCollider2D>().offset = new Vector2(0.01609588f, 0.0437054f);
-                GetComponent<BoxCollider2D>().size = new Vector2(0.8034868f, 2.969205f);
+                GetComponent<BoxCollider2D>().offset = new Vector2(0.01609588f, -0.5422899f);
+                GetComponent<BoxCollider2D>().size = new Vector2(0.8034868f, 2.543027f);
                 STATE = FULLCANDLE;
                 candle_audio.Play();
                 break;
@@ -105,6 +105,7 @@ public class SpriteChangeCandle : MonoBehaviour {
             transform.localScale = new Vector3(0.4f, 0.4f, 1f);
             allowDragging = false;
             STATE = BACK_IN_CLOSET;
+            GameObject.Find("closet_close_2").GetComponent<BoxCollider2D>().enabled = false;
             if(!cupboard_audio.isPlaying&&cupboard_audio_played==false){
                 cupboard_audio.Play();
                 cupboard_audio_played = true;
